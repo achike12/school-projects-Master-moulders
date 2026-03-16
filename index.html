@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Moulder International Academy - Weekly Projects</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+  }
+  header {
+    background: #4CAF50;
+    color: white;
+    padding: 25px 0;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+  .project {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  .project:hover {
+    transform: translateY(-5px);
+  }
+  .project img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  .project h2 {
+    margin-top: 0;
+    color: #4CAF50;
+  }
+  .week-label {
+    font-weight: bold;
+    color: #555;
+  }
+  footer {
+    text-align: center;
+    padding: 15px;
+    background: #333;
+    color: white;
+    margin-top: 40px;
+  }
+  .add-project-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .add-project-form input, .add-project-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .add-project-form button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .add-project-form button:hover {
+    background: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<header>
+Master Moulder International Academy - Weekly Projects
+</header>
+
+<main>
+  <div class="add-project-form">
+    <h2>Add a New Project</h2>
+    <input type="text" id="week" placeholder="Week (e.g., Week 4)" required>
+    <input type="text" id="title" placeholder="Project Title" required>
+    <textarea id="description" rows="3" placeholder="Project Description" required></textarea>
+    <input type="text" id="image" placeholder="Image URL (optional)">
+    <button onclick="addProject()">Add Project</button>
+  </div>
+
+  <div id="projects-container">
+    <!-- Preloaded projects -->
+    <div class="project">
+      <h2>Week 1 Project</h2>
+      <p class="week-label">Project:</p>
+      <p>Computer Room Network Drawing</p>
+      <p>Description: I drew a network showing computers, printer, and router connections.</p>
+      <img src="https://via.placeholder.com/800x400?text=Week+1+Project+Image" alt="Week 1 Project Image">
+    </div>
+
+    <div class="project">
+      <h2>Week 2 Project</h2>
+      <p class="week-label">Project:</p>
+      <p>Colour Wheel Chart</p>
+      <p>Description: A complete colour wheel showing primary, secondary, and tertiary colours.</p>
+      <img src="https://via.placeholder.com/800x400?text=Week+2+Project+Image" alt="Week 2 Project Image">
+    </div>
+
+    <div class="project">
+      <h2>Week 3 Project</h2>
+      <p class="week-label">Project:</p>
+      <p>Nigeria Solid Minerals Map</p>
+      <p>Description: Map showing solid minerals and the states where they are found.</p>
+      <img src="https://via.placeholder.com/800x400?text=Week+3+Project+Image" alt="Week 3 Project Image">
+    </div>
+  </div>
+</main>
+
+<footer>
+&copy; 2026 Master Moulder International Academy
+</footer>
+
+<script>
+function addProject() {
+  const week = document.getElementById('week').value;
+  const title = document.getElementById('title').value;
+  const description = document.getElementById('description').value;
+  const image = document.getElementById('image').value;
+
+  if (!week || !title || !description) {
+    alert("Please fill in Week, Title, and Description.");
+    return;
+  }
+
+  const container = document.getElementById('projects-container');
+
+  const projectDiv = document.createElement('div');
+  projectDiv.classList.add('project');
+
+  let projectHTML = `<h2>${week} Project</h2>
+                     <p class="week-label">Project:</p>
+                     <p>${title}</p>
+                     <p>Description: ${description}</p>`;
+  
+  if (image) {
+    projectHTML += `<img src="${image}" alt="${week} Project Image">`;
+  }
+
+  projectDiv.innerHTML = projectHTML;
+  container.prepend(projectDiv);
+
+  // Clear form
+  document.getElementById('week').value = '';
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('image').value = '';
+}
+</script>
+
+</body>
+</html>
